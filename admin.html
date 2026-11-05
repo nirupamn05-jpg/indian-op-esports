@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080808"><title>Admin | INDIAN OP ESPORTS</title>
+<style>
+:root{--bg:#080808;--panel:#151113;--panel2:#1d1115;--red:#f12648;--line:#43202a;--text:#fff;--muted:#b7aeb2;--green:#54d6a0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#300812,transparent 35%),var(--bg);color:var(--text);font-family:Arial,sans-serif}.wrap{width:min(1100px,94%);margin:auto}header{border-bottom:1px solid var(--line);padding:18px 0;background:#0c090a}.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:900;letter-spacing:1px}.brand span{color:var(--red)}h1{font-size:26px;margin:26px 0 6px}.muted{color:var(--muted);font-size:14px;line-height:1.5}.panel{background:linear-gradient(145deg,#1b1114,#101010);border:1px solid var(--line);border-radius:14px;padding:20px;margin:18px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.stat{background:#0e0d0e;border:1px solid #35232a;border-radius:10px;padding:16px}.stat b{display:block;font-size:27px;color:#ff6078}.stat span{font-size:12px;color:var(--muted)}label{display:block;font-size:13px;margin:12px 0 6px;color:#e7dfe2}input,select,textarea{width:100%;padding:12px;border:1px solid #49313a;border-radius:8px;background:#090909;color:white;font:inherit}button,.btn{border:0;border-radius:8px;padding:11px 15px;background:linear-gradient(100deg,#d20e32,#ff3658);color:#fff;font-weight:800;cursor:pointer}button.secondary{background:#30252a;border:1px solid #50303a}button.danger{background:#762033}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.hidden{display:none!important}.msg{padding:10px;border-radius:8px;background:#24151a;color:#ffc3ce;margin-top:12px;font-size:13px}.ok{background:#10291f;color:#a5f5d1}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.tabs button{background:#24191d;border:1px solid var(--line)}.tabs button.active{background:var(--red)}table{width:100%;border-collapse:collapse;min-width:600px}th,td{text-align:left;padding:12px;border-bottom:1px solid #35252b;font-size:13px}th{color:#ff9cac}.tablewrap{overflow:auto}h2{font-size:19px;margin:0 0 12px}.small{font-size:12px;color:var(--muted)}.item{padding:12px;border:1px solid #38252b;border-radius:9px;margin:9px 0;background:#100e0f}.item strong{display:block;margin-bottom:5px}.item button{margin:5px 5px 0 0}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.top{align-items:flex-start}.panel{padding:15px}.row{display:block}.row>*{margin-bottom:8px}}
+</style></head>
+<body>
+<header><div class="wrap top"><div class="brand">INDIAN OP <span>ESPORTS</span> <small class="small">/ ADMIN</small></div><a href="./index.html" class="small">View website ↗</a></div></header>
+<main class="wrap">
+<h1>Admin Control Center</h1><p class="muted">Manage Free Fire tournaments, prize pools, registrations and leaderboard.</p>
+<section id="loginPanel" class="panel">
+<h2>Admin Login</h2><p class="muted">Sign in with the admin email account created in Firebase Authentication.</p>
+<label>Email</label><input id="email" type="email" autocomplete="username" placeholder="admin@example.com">
+<label>Password</label><input id="password" type="password" autocomplete="current-password" placeholder="Your password">
+<div class="row" style="margin-top:14px"><button id="loginBtn">Sign in</button></div><div id="loginMsg" class="msg hidden"></div>
+</section>
+<section id="appPanel" class="hidden">
+<div class="row"><div class="grid" style="flex:1"><div class="stat"><b id="countT">0</b><span>Tournaments</span></div><div class="stat"><b id="countR">0</b><span>Registrations</span></div><div class="stat"><b id="countL">0</b><span>Leaderboard teams</span></div></div><button id="logoutBtn" class="secondary" style="flex:0 0 auto">Sign out</button></div>
+<div class="tabs"><button class="active" data-tab="tournaments">Tournaments</button><button data-tab="registrations">Registrations</button><button data-tab="leaderboard">Leaderboard</button><button data-tab="announcements">Announcements</button></div>
+<section id="tab-tournaments" class="panel">
+<h2>Add / Edit Tournament</h2><input id="tId" type="hidden">
+<label>Tournament name</label><input id="tName" maxlength="80" placeholder="e.g. Booyah Squad Championship">
+<div class="row"><div><label>Prize pool (₹)</label><input id="tPrize" type="number" min="0" max="10000000" placeholder="15000"></div><div><label>Entry fee (display text)</label><input id="tEntry" maxlength="40" placeholder="Free"></div><div><label>Team slots</label><input id="tSlots" maxlength="30" placeholder="48 teams"></div></div>
+<label>Format / description</label><input id="tFormat" maxlength="140" placeholder="Battle Royale • Squad • 4 players">
+<label>Prize breakdown</label><input id="tBreakdown" maxlength="180" placeholder="1st: ₹9,000 • 2nd: ₹4,000 • 3rd: ₹2,000">
+<label><input id="tActive" type="checkbox" checked style="width:auto"> Show this tournament publicly</label>
+<div class="row"><button id="saveTournament">Save tournament</button><button id="clearTournament" class="secondary">Clear form</button></div>
+<div id="tournamentList"></div>
+</section>
+<section id="tab-registrations" class="panel hidden"><h2>Player Registrations</h2><p class="muted">Player entries submitted on the public website appear here.</p><div id="registrationList"></div></section>
+<section id="tab-leaderboard" class="panel hidden">
+<h2>Add / Update Leaderboard</h2><input id="lId" type="hidden"><div class="row"><div><label>Team name</label><input id="lTeam" maxlength="60" placeholder="Team name"></div><div><label>Points</label><input id="lPoints" type="number" min="0" max="100000" placeholder="245"></div><div><label>Kills (optional)</label><input id="lKills" type="number" min="0" max="100000" placeholder="30"></div></div><div class="row"><button id="saveLeader">Save team score</button><button id="clearLeader" class="secondary">Clear form</button></div><div id="leaderList"></div>
+</section>
+<section id="tab-announcements" class="panel hidden"><h2>Publish Announcement</h2><label>Announcement</label><textarea id="announcementText" rows="3" maxlength="500" placeholder="Tournament registration is now open!"></textarea><button id="publishAnnouncement" style="margin-top:12px">Publish</button><div id="announcementList"></div></section>
+<div id="appMsg" class="msg hidden"></div>
+</section>
+<p class="small">Security note: admin access is enforced by Firestore rules. Do not publish your service account key or private credentials in this website.</p>
+</main>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC7WDMy3j7nime9PiixLB00b6ezgU-oJyI",
+  authDomain: "indian-op-esports.firebaseapp.com",
+  projectId: "indian-op-esports",
+  storageBucket: "indian-op-esports.firebasestorage.app",
+  messagingSenderId: "865276485411",
+  appId: "1:865276485411:web:7f32ccc9892dae57b63696",
+  measurementId: "G-YJ0CCV6XV1"
+};
+const ADMIN_UID = "jyQ6VluYfbT8YaNjNxeI8uglH8T2";
+const configured = true;
+const $ = id => document.getElementById(id);
+const show = (id,msg,ok=false) => { const e=$(id);e.textContent=msg;e.classList.remove("hidden");e.classList.toggle("ok",ok); };
+if (!configured) {
+  show("loginMsg","Firebase setup required: create a Firebase project, add a Web App, then paste its config into admin.html and index.html.");
+  $("loginBtn").disabled=true;
+} else {
+  const app=initializeApp(firebaseConfig), auth=getAuth(app), db=getFirestore(app);
+  let currentUser=null;
+  $("loginBtn").onclick=async()=>{try{await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);show("loginMsg","Signed in.",true)}catch(e){show("loginMsg","Login failed: "+e.message)}};
+  $("logoutBtn").onclick=()=>signOut(auth);
+  onAuthStateChanged(auth,async user=>{
+    currentUser=user;
+    if (user && user.uid !== ADMIN_UID) {
+      await signOut(auth);
+      $("loginPanel").classList.remove("hidden");
+      $("appPanel").classList.add("hidden");
+      show("loginMsg","This account is not authorised as the INDIAN OP ESPORTS admin.");
+      return;
+    }
+    $("loginPanel").classList.toggle("hidden",!!user);
+    $("appPanel").classList.toggle("hidden",!user);
+    if(user) await refreshAll();
+  });
+  document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));["tournaments","registrations","leaderboard","announcements"].forEach(t=>$("tab-"+t).classList.toggle("hidden",t!==b.dataset.tab));});
+  const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  async function list(name,sortField="createdAt"){const q=query(collection(db,name),orderBy(sortField,"desc"));const s=await getDocs(q);return s.docs.map(d=>({id:d.id,...d.data()}));}
+  async function refreshAll(){
+    try {
+      const [ts,rs,ls,as]=await Promise.all([list("tournaments"),list("registrations"),list("leaderboard","points"),list("announcements")]);
+      $("countT").textContent=ts.length;$("countR").textContent=rs.length;$("countL").textContent=ls.length;
+      $("tournamentList").innerHTML=ts.map(t=>`<div class="item"><strong>${safe(t.name)} — ₹${Number(t.prizePool||0).toLocaleString("en-IN")}</strong><span class="small">${safe(t.format)} · ${t.active===false?"Hidden":"Public"}</span><br><button data-edit-t="${t.id}">Edit</button><button class="danger" data-del-t="${t.id}">Delete</button></div>`).join("")||'<p class="muted">No tournaments yet.</p>';
+      $("registrationList").innerHTML=rs.map(r=>`<div class="item"><strong>${safe(r.team)} — ${safe(r.captain)}</strong><span class="small">${safe(r.email)} · ${safe(r.players)} · ${safe(r.status||"new")}</span><br><button data-status="${r.id}">Mark reviewed</button></div>`).join("")||'<p class="muted">No registrations yet.</p>';
+      $("leaderList").innerHTML=ls.map(l=>`<div class="item"><strong>${safe(l.team)} — ${Number(l.points||0)} points</strong><span class="small">Kills: ${Number(l.kills||0)}</span><br><button data-edit-l="${l.id}">Edit</button><button class="danger" data-del-l="${l.id}">Delete</button></div>`).join("")||'<p class="muted">No leaderboard scores yet.</p>';
+      $("announcementList").innerHTML=as.map(a=>`<div class="item">${safe(a.text)}<br><button class="danger" data-del-a="${a.id}">Delete</button></div>`).join("");
+      $("tournamentList").querySelectorAll("[data-edit-t]").forEach(b=>b.onclick=()=>{const t=ts.find(x=>x.id===b.dataset.editT);$("tId").value=t.id;$("tName").value=t.name||"";$("tPrize").value=t.prizePool||0;$("tEntry").value=t.entryFee||"Free";$("tSlots").value=t.slots||"";$("tFormat").value=t.format||"";$("tBreakdown").value=t.prizeBreakdown||"";$("tActive").checked=t.active!==false;window.scrollTo(0,0)});
+      $("tournamentList").querySelectorAll("[data-del-t]").forEach(b=>b.onclick=async()=>{if(confirm("Delete this tournament?")){await deleteDoc(doc(db,"tournaments",b.dataset.delT));await refreshAll()}});
+      $("registrationList").querySelectorAll("[data-status]").forEach(b=>b.onclick=async()=>{await updateDoc(doc(db,"registrations",b.dataset.status),{status:"reviewed"});await refreshAll()});
+      $("leaderList").querySelectorAll("[data-edit-l]").forEach(b=>b.onclick=()=>{const l=ls.find(x=>x.id===b.dataset.editL);$("lId").value=l.id;$("lTeam").value=l.team||"";$("lPoints").value=l.points||0;$("lKills").value=l.kills||0;});
+      $("leaderList").querySelectorAll("[data-del-l]").forEach(b=>b.onclick=async()=>{if(confirm("Delete this leaderboard entry?")){await deleteDoc(doc(db,"leaderboard",b.dataset.delL));await refreshAll()}});
+      $("announcementList").querySelectorAll("[data-del-a]").forEach(b=>b.onclick=async()=>{if(confirm("Delete announcement?")){await deleteDoc(doc(db,"announcements",b.dataset.delA));await refreshAll()}});
+    } catch(e){show("appMsg","Could not load data. Check Firestore rules and indexes: "+e.message)}
+  }
+  $("saveTournament").onclick=async()=>{try{const data={name:$("tName").value.trim(),prizePool:Number($("tPrize").value||0),entryFee:$("tEntry").value.trim()||"Free",slots:$("tSlots").value.trim(),format:$("tFormat").value.trim(),prizeBreakdown:$("tBreakdown").value.trim(),active:$("tActive").checked,updatedAt:serverTimestamp()};if(!data.name)throw Error("Enter a tournament name.");if($("tId").value)await updateDoc(doc(db,"tournaments",$("tId").value),data);else await addDoc(collection(db,"tournaments"),{...data,createdAt:serverTimestamp()});$("clearTournament").click();show("appMsg","Tournament saved.",true);await refreshAll()}catch(e){show("appMsg",e.message)}};
+  $("clearTournament").onclick=()=>{["tId","tName","tPrize","tEntry","tSlots","tFormat","tBreakdown"].forEach(id=>$(id).value="");$("tActive").checked=true};
+  $("saveLeader").onclick=async()=>{try{const data={team:$("lTeam").value.trim(),points:Number($("lPoints").value||0),kills:Number($("lKills").value||0),updatedAt:serverTimestamp()};if(!data.team)throw Error("Enter a team name.");if($("lId").value)await updateDoc(doc(db,"leaderboard",$("lId").value),data);else await addDoc(collection(db,"leaderboard"),{...data,createdAt:serverTimestamp()});$("clearLeader").click();show("appMsg","Leaderboard updated.",true);await refreshAll()}catch(e){show("appMsg",e.message)}};
+  $("clearLeader").onclick=()=>{["lId","lTeam","lPoints","lKills"].forEach(id=>$(id).value="")};
+  $("publishAnnouncement").onclick=async()=>{try{const text=$("announcementText").value.trim();if(!text)throw Error("Write an announcement first.");await addDoc(collection(db,"announcements"),{text,createdAt:serverTimestamp()});$("announcementText").value="";show("appMsg","Announcement published.",true);await refreshAll()}catch(e){show("appMsg",e.message)}};
+}
+</script></body></html>
