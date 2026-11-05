@@ -30,41 +30,87 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
 <div class="stat"><strong>01</strong><small>Featured Game</small></div><div class="stat"><strong>₹30K</strong><small>Sample Prize Pool</small></div><div class="stat"><strong>24/7</strong><small>Community Access</small></div><div class="stat"><strong>ALL</strong><small>Skill Levels Welcome</small></div>
 </div>
 
-<section id="tournaments"><div class="section-head"><div><div class="eyebrow">FIND YOUR MATCH</div><h2>Featured Tournaments</h2><p>Free Fire events — sample details; confirm before opening registration.</p></div></div>
-<div class="grid">
+<section id="tournaments"><div class="section-head"><div><div class="eyebrow">FIND YOUR MATCH</div><h2>Featured Tournaments</h2><p>Live tournament details from INDIAN OP ESPORTS.</p></div></div>
+<div class="grid" id="tournamentCards">
 <article class="card"><span class="tag">FREE FIRE</span><h3>Booyah Squad Championship</h3><p class="muted">Battle Royale • Squad • 4 players per team</p><div class="prize">₹15,000</div><div class="meta"><span>Entry: Set by organiser</span><span>48 teams</span></div><a class="btn" href="#register">Register team</a></article>
-<article class="card"><span class="tag">FREE FIRE</span><h3>Clash Squad Masters</h3><p class="muted">Clash Squad • Competitive 4v4 • Knockout rounds</p><div class="prize">₹10,000</div><div class="meta"><span>Entry: Set by organiser</span><span>32 teams</span></div><a class="btn" href="#register">Register team</a></article>
-<article class="card"><span class="tag">FREE FIRE</span><h3>Weekend Booyah Cup</h3><p class="muted">Community event • Battle Royale • Details coming soon</p><div class="prize">₹5,000</div><div class="meta"><span>Entry: Set by organiser</span><span>Open slots</span></div><a class="btn" href="#register">Get updates</a></article>
+<article class="card"><span class="tag">FREE FIRE</span><h3>Clash Squad Masters</h3><p class="muted">Clash Squad • Competitive 4v4</p><div class="prize">₹10,000</div><div class="meta"><span>Entry: Set by organiser</span><span>32 teams</span></div><a class="btn" href="#register">Register team</a></article>
+<article class="card"><span class="tag">FREE FIRE</span><h3>Weekend Booyah Cup</h3><p class="muted">Community event • Battle Royale</p><div class="prize">₹5,000</div><div class="meta"><span>Entry: Set by organiser</span><span>Open slots</span></div><a class="btn" href="#register">Register team</a></article>
 </div></section>
 
-<section id="leaderboard"><div class="section-head"><div><div class="eyebrow">THE TOP FRAGGERS</div><h2>Leaderboard</h2><p>Demo standings. Replace with verified match results.</p></div></div>
-<div class="table-wrap"><table><thead><tr><th>RANK</th><th>TEAM</th><th>GAME</th><th>POINTS</th></tr></thead><tbody id="leaderRows"><tr><td class="rank">01</td><td>OP TITANS</td><td>Free Fire</td><td>245</td></tr><tr><td class="rank">02</td><td>BOOYAH X</td><td>Free Fire</td><td>220</td></tr><tr><td class="rank">03</td><td>SHADOW SQUAD</td><td>Free Fire</td><td>198</td></tr><tr><td class="rank">04</td><td>CLUTCH CREW</td><td>Free Fire</td><td>175</td></tr></tbody></table></div></section>
+<section id="leaderboard"><div class="section-head"><div><div class="eyebrow">THE TOP FRAGGERS</div><h2>Leaderboard</h2><p>Updated match standings.</p></div></div>
+<div class="table-wrap"><table><thead><tr><th>RANK</th><th>TEAM</th><th>GAME</th><th>POINTS</th></tr></thead><tbody id="leaderRows"><tr><td class="rank">01</td><td>OP TITANS</td><td>Free Fire</td><td>245</td></tr><tr><td class="rank">02</td><td>BOOYAH X</td><td>Free Fire</td><td>220</td></tr></tbody></table></div></section>
 
-<section id="prizes"><div class="section-head"><div><div class="eyebrow">GLORY & REWARDS</div><h2>Prize Pool</h2><p>Illustrative prize breakdown — confirm amounts and eligibility before publishing.</p></div></div>
-<div class="grid"><div class="card"><span class="tag">FREE FIRE</span><h3>Booyah Squad Championship</h3><div class="prize">₹15,000</div><p class="muted">1st: ₹9,000 • 2nd: ₹4,000 • 3rd: ₹2,000</p></div><div class="card"><span class="tag">FREE FIRE</span><h3>Clash Squad Masters</h3><div class="prize">₹10,000</div><p class="muted">1st: ₹6,000 • 2nd: ₹3,000 • 3rd: ₹1,000</p></div><div class="card"><span class="tag">FREE FIRE</span><h3>Weekend Booyah Cup</h3><div class="prize">₹5,000</div><p class="muted">Final rewards to be announced by organiser.</p></div></div>
-</section>
+<section id="prizes"><div class="section-head"><div><div class="eyebrow">GLORY & REWARDS</div><h2>Prize Pool</h2><p>Official prize details for current events.</p></div></div>
+<div class="grid" id="prizeCards"><div class="card"><span class="tag">FREE FIRE</span><h3>Booyah Squad Championship</h3><div class="prize">₹15,000</div><p class="muted">1st: ₹9,000 • 2nd: ₹4,000 • 3rd: ₹2,000</p></div></div></section>
 
 <section id="register"><div class="section-head"><div><div class="eyebrow">YOUR NEXT MATCH STARTS HERE</div><h2>Team Registration</h2><p>Submit your team details to register interest.</p></div></div>
-<div class="form-layout"><div class="form-card"><div class="eyebrow">READY, PLAYER ONE?</div><h2>Join the arena.</h2><p class="muted">Fill in the form. This starter version stores registrations only in this browser. Connect a form service or backend to receive entries online.</p><p class="note">No payment is collected on this page. Never share passwords, OTPs or sensitive account details.</p></div>
+<div class="form-layout"><div class="form-card"><div class="eyebrow">READY, PLAYER ONE?</div><h2>Join the arena.</h2><p class="muted">Fill in your team details. Your registration will be sent to the tournament organisers when the online database is configured.</p><p class="note">No payment is collected on this page. Never share passwords, OTPs or sensitive account details.</p></div>
 <form class="card" id="regForm"><div class="form-grid">
 <div class="field"><label for="captain">Captain name *</label><input id="captain" required maxlength="60" placeholder="Your name"></div>
 <div class="field"><label for="team">Team name *</label><input id="team" required maxlength="40" placeholder="Your squad name"></div>
 <div class="field"><label for="game">Game *</label><select id="game" required><option value="">Choose game</option><option>Free Fire</option></select></div>
 <div class="field"><label for="contact">Contact email *</label><input id="contact" type="email" required placeholder="you@example.com"></div>
 <div class="field full"><label for="players">Player IDs / in-game names</label><textarea id="players" rows="3" placeholder="List your squad members (do not enter passwords)"></textarea></div>
-<div class="field full"><button class="btn" type="submit">Submit Registration</button><div class="success" id="success" role="status">Registration saved in this browser. Contact the tournament organiser to confirm your slot.</div></div>
+<div class="field full"><button class="btn" type="submit">Submit Registration</button><div class="success" id="success" role="status">Registration submitted. The tournament organiser will contact you to confirm your slot.</div></div>
 </div></form></div></section>
 </div>
 </main>
 <footer><div class="wrap footer-row"><span>© <span id="year"></span> INDIAN OP ESPORTS</span><span>Community esports • Play fair • Respect every player</span><span>Unofficial community platform; not affiliated with game publishers.</span></div></footer>
-<script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 document.getElementById('year').textContent=new Date().getFullYear();
+
+// Paste the SAME Firebase web app config into this object and admin.html.
+const firebaseConfig = {
+  apiKey: "AIzaSyC7WDMy3j7nime9PiixLB00b6ezgU-oJyI",
+  authDomain: "indian-op-esports.firebaseapp.com",
+  projectId: "indian-op-esports",
+  storageBucket: "indian-op-esports.firebasestorage.app",
+  messagingSenderId: "865276485411",
+  appId: "1:865276485411:web:7f32ccc9892dae57b63696",
+  measurementId: "G-YJ0CCV6XV1"
+};
+const configured = firebaseConfig.apiKey !== "PASTE_API_KEY" && firebaseConfig.projectId !== "PASTE_PROJECT_ID";
+let db = null;
+if (configured) {
+  const app = initializeApp(firebaseConfig);
+  db = getFirestore(app);
+}
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money = n => "₹" + Number(n || 0).toLocaleString("en-IN");
+function renderTournaments(items) {
+  const cards = document.getElementById("tournamentCards");
+  const prizes = document.getElementById("prizeCards");
+  if (!items.length) return;
+  cards.innerHTML = items.map(t => `<article class="card"><span class="tag">FREE FIRE</span><h3>${esc(t.name)}</h3><p class="muted">${esc(t.format || "Free Fire tournament")}</p><div class="prize">${money(t.prizePool)}</div><div class="meta"><span>Entry: ${esc(t.entryFee || "Free")}</span><span>${esc(t.slots || "Open")} slots</span></div><a class="btn" href="#register">Register team</a></article>`).join("");
+  prizes.innerHTML = items.map(t => `<article class="card"><span class="tag">FREE FIRE</span><h3>${esc(t.name)}</h3><div class="prize">${money(t.prizePool)}</div><p class="muted">${esc(t.prizeBreakdown || "Prize distribution announced by organiser.")}</p></article>`).join("");
+}
+async function loadPublicData() {
+  if (!db) return;
+  try {
+    const tq = query(collection(db, "tournaments"), orderBy("createdAt", "desc"));
+    const ts = await getDocs(tq);
+    renderTournaments(ts.docs.map(d => ({id:d.id,...d.data()})).filter(t => t.active !== false));
+    const lq = query(collection(db, "leaderboard"), orderBy("points", "desc"));
+    const ls = await getDocs(lq);
+    if (!ls.empty) document.getElementById("leaderRows").innerHTML = ls.docs.map((d,i) => {
+      const x=d.data(); return `<tr><td class="rank">${String(i+1).padStart(2,"0")}</td><td>${esc(x.team)}</td><td>Free Fire</td><td>${esc(x.points)}</td></tr>`;
+    }).join("");
+  } catch (err) { console.warn("Could not load live tournament data:", err); }
+}
+loadPublicData();
+
 function selectGame(game){document.getElementById('game').value=game}
-document.getElementById('regForm').addEventListener('submit',function(e){
+document.getElementById('regForm').addEventListener('submit', async function(e){
  e.preventDefault();
- const entry={captain:document.getElementById('captain').value.trim(),team:document.getElementById('team').value.trim(),game:document.getElementById('game').value,email:document.getElementById('contact').value.trim(),players:document.getElementById('players').value.trim(),submitted:new Date().toISOString()};
- const entries=JSON.parse(localStorage.getItem('ioe_registrations')||'[]');entries.push(entry);localStorage.setItem('ioe_registrations',JSON.stringify(entries));
- document.getElementById('success').style.display='block';this.reset();
+ const entry={captain:document.getElementById('captain').value.trim(),team:document.getElementById('team').value.trim(),game:"Free Fire",email:document.getElementById('contact').value.trim(),players:document.getElementById('players').value.trim()};
+ const success=document.getElementById('success');
+ if (!db) { success.textContent="Online registration is not configured yet. Please contact the tournament organiser."; success.style.display='block'; return; }
+ try {
+   await addDoc(collection(db,"registrations"), {...entry, status:"new", createdAt:serverTimestamp()});
+   success.style.display='block'; this.reset();
+ } catch(err) { success.textContent="Registration could not be submitted. Please try again later."; success.style.display='block'; console.error(err); }
 });
 </script>
 </body></html>
